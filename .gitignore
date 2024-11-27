@@ -1,0 +1,12 @@
+.idea/
+.DS_Store
+*.iml
+
+.allure/
+.allure-report/
+.allure-results/
+
+target/
+
+/src/main/resources/env/*
+!src/main/resources/env/config.example.properties
