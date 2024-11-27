@@ -1,23 +1,21 @@
 package com.arch.incorp.tests.pets;
 
-import com.arch.incorp.tests.RestApiBaseTest;
-import framework.DataGenerators;
 import framework.assertions.CreatePetAssertions;
 import framework.controllers.PetController;
 import framework.enums.PetStatus;
+import framework.services.ApiService;
+import io.qameta.allure.Issue;
 import models.pet.repsonseModel.PetCreateResponse;
 import models.pet.requestModel.PetCreateRequest;
 import framework.services.PetApiService;
 import io.qameta.allure.Description;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import java.util.List;
 
 import static framework.conditions.Conditions.statusCode;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
-public class CreatePetTest extends RestApiBaseTest {
+public class CreatePetTest extends ApiService {
 
     @DataProvider(name = "pet-statuses")
     public Object[][] dataProvFunc() {
@@ -29,7 +27,7 @@ public class CreatePetTest extends RestApiBaseTest {
     }
 
     @Test(dataProvider = "pet-statuses")
-    @Description("Create new pet")
+    @Description("Positive. Create new pet with all possible statuses")
     public void createNewPet(String status) {
         // Build pet model
         PetCreateRequest petModel = new PetController().buildRandomPetModel(status);
@@ -40,6 +38,17 @@ public class CreatePetTest extends RestApiBaseTest {
                 .asPojo(PetCreateResponse.class);
 
         // Assertions
-        CreatePetAssertions.assertCreatePetResponse(petModel, petCreateResponse);
+        CreatePetAssertions.assertAllFields(petModel, petCreateResponse);
+    }
+
+    @Test
+    @Issue("Should be 405 error. Invalid input")
+    @Description("Negative. Create new pet with all possible statuses")
+    public void createNewPetWithWrongStatus() {
+        // Build pet model
+        PetCreateRequest petModel = new PetController().buildRandomPetModel(PetStatus.WRONG_STATUS.getStatus());
+
+        // Send request
+        new PetApiService().addPet(petModel).shouldHave(statusCode(400));
     }
 }
