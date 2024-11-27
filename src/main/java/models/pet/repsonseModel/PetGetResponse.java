@@ -16,7 +16,7 @@ public class PetGetResponse {
     private long id;
 
     @JsonProperty("category")
-    private PetCreateResponse.Category category;
+    private Category category;
 
     @JsonProperty("name")
     private String name;
@@ -25,7 +25,7 @@ public class PetGetResponse {
     private List<String> photoUrls;
 
     @JsonProperty("tags")
-    private List<PetCreateResponse.TagsItem> tags;
+    private List<TagsItem> tags;
 
     @JsonProperty("status")
     private String status;
