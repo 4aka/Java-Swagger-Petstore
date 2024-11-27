@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class CreatePetAssertions {
 
-        public static void assertCreatePetResponse(PetCreateRequest petModel, PetCreateResponse petResponse) {
+        public static void assertAllFields(PetCreateRequest petModel, PetCreateResponse petResponse) {
             assertThat(petModel.getId(), equalTo(petResponse.getId()));
             assertThat(petModel.getCategory().getId(), equalTo(petResponse.getCategory().getId()));
             assertThat(petModel.getCategory().getName(), equalTo(petResponse.getCategory().getName()));
