@@ -45,7 +45,7 @@ public class PetController {
             .build();
      }
 
-     public<T> PetEditRequest buildPetModelForEdit(long petId, PetStatus status) {
+     public PetEditRequest buildPetModelForEdit(long petId, PetStatus status) {
          PetGetResponse petGetResponse = apiService.getPetById(petId)
                  .shouldHave(statusCode(200))
                  .asPojo(PetGetResponse.class);
