@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="REST API" parallel="false">
+    <test name="Pets">
+        <classes>
+            <class name="com.arch.incorp.tests.pets.CreatePetTest"/>
+            <class name="com.arch.incorp.tests.pets.GetPetsTest"/>
+        </classes>
+    </test>
+</suite>
