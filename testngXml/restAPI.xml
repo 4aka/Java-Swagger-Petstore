@@ -4,7 +4,7 @@
     <test name="Pets">
         <classes>
             <class name="com.arch.incorp.tests.pets.CreatePetTest"/>
-            <class name="com.arch.incorp.tests.pets.GetPetsTest"/>
+            <class name="com.arch.incorp.tests.pets.GetPetTest"/>
         </classes>
     </test>
 </suite>
