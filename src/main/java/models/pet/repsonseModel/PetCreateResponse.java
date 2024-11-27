@@ -13,7 +13,7 @@ import java.util.List;
 public class PetCreateResponse{
 
 	@JsonProperty("id")
-	private int id;
+	private long id;
 
 	@JsonProperty("category")
 	private Category category;
@@ -36,7 +36,7 @@ public class PetCreateResponse{
 	public static class Category {
 
 		@JsonProperty("id")
-		private int id;
+		private long id;
 
 		@JsonProperty("name")
 		private String name;
@@ -51,7 +51,7 @@ public class PetCreateResponse{
 		private String name;
 
 		@JsonProperty("id")
-		private int id;
+		private long id;
 	}
 
 }
