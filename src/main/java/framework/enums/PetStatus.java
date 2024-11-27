@@ -7,7 +7,8 @@ public enum PetStatus {
 
     AVAILABLE("available"),
     PENDING("pending"),
-    SOLD("sold");
+    SOLD("sold"),
+    WRONG_STATUS("wrong status !!! !$$#4");
 
     private final String status;
 
