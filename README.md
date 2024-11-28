@@ -1,6 +1,7 @@
 
 **Before testing make sure that you have already set JAVA_HOME**
 **Make sure that all required packages are installed!**
+**Make sure that allure is installed - npm install -g allure-commandline**
 
 ## RestApi testing
 
@@ -20,4 +21,3 @@ or
 
 `allure generate target/allure-results'
 'allure open`
- 
