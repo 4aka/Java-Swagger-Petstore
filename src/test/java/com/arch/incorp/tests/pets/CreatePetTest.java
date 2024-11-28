@@ -14,7 +14,6 @@ import org.testng.annotations.Test;
 
 import static framework.conditions.Conditions.statusCode;
 
-
 public class CreatePetTest extends ApiService {
 
     @DataProvider(name = "pet-statuses")

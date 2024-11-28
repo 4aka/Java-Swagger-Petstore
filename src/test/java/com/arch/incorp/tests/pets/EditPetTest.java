@@ -1,12 +1,11 @@
 package com.arch.incorp.tests.pets;
 
 import framework.controllers.PetController;
+import framework.controllers.PetCreateEntities;
 import framework.enums.PetStatus;
 import framework.services.PetApiService;
 import io.qameta.allure.Description;
-import models.pet.repsonseModel.PetCreateResponse;
 import models.pet.repsonseModel.PetEditResponse;
-import models.pet.requestModel.PetCreateRequest;
 import models.pet.requestModel.PetEditRequest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -20,25 +19,14 @@ public class EditPetTest {
     @Test()
     @Description("Positive. Edit pet status")
     public void editPetStatus() {
-        // Build pet model for create
-        PetCreateRequest createPetModel = new PetController().buildRandomPetModel(PetStatus.AVAILABLE);
-
-        // Send request
-        PetCreateResponse petCreateResponse = new PetApiService().addPet(createPetModel)
-                .shouldHave(statusCode(200))
-                .asPojo(PetCreateResponse.class);
-
-        // Assertions
-        Assert.assertEquals(createPetModel.getStatus(), PetStatus.AVAILABLE.getStatus());
-
-        // Extract pet Id
-        long petId = petCreateResponse.getId();
+        // Create pet and extract pet Id
+        long petId = new PetCreateEntities().createAvailablePetWithRandomValues().getId();
 
         // Build pet model for edit
         PetEditRequest editPetModel = new PetController().buildPetModelForEdit(petId, PetStatus.SOLD);
 
         // Send request
-        PetEditResponse petEditResponse = apiService.EditPetById(editPetModel)
+        PetEditResponse petEditResponse = apiService.editPetById(editPetModel)
                 .shouldHave(statusCode(200))
                 .asPojo(PetEditResponse.class);
 
