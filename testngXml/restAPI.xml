@@ -6,6 +6,7 @@
             <class name="com.arch.incorp.tests.pets.CreatePetTest"/>
             <class name="com.arch.incorp.tests.pets.GetPetTest"/>
             <class name="com.arch.incorp.tests.pets.EditPetTest"/>
+            <class name="com.arch.incorp.tests.pets.DeletePetTest"/>
         </classes>
     </test>
 </suite>
