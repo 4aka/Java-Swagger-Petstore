@@ -12,7 +12,7 @@ public class PetApiService extends ApiService {
                 .spec(REQUEST_SPEC)
                 .body(petModel)
                 .when()
-                .post("pet"));
+                .post("/pet"));
     }
 
     public AssertableResponse getFindByStatus(PetStatus status) {
@@ -31,11 +31,18 @@ public class PetApiService extends ApiService {
                 .get("/pet/" + petId));
     }
 
-    public AssertableResponse EditPetById(PetEditRequest petRequest) {
+    public AssertableResponse editPetById(PetEditRequest petRequest) {
          return new AssertableResponse(setUp()
                 .spec(REQUEST_SPEC)
                 .body(petRequest)
                 .when()
-                .put("/pet/"));
+                .put("/pet"));
+    }
+
+    public AssertableResponse deletePetById(long petId) {
+        return new AssertableResponse(setUp()
+                .spec(REQUEST_SPEC)
+                .when()
+                .delete("/pet/" + petId));
     }
 }
